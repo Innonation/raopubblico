@@ -1,0 +1,7 @@
+{% extends "rao/mail/baseMail.html" %}
+
+
+{% block message_title_first %}
+    Gentile {{ mail_elements.nameUser }} {{ mail_elements.familyNameUser }},
+    <br> la configurazione dell'email SMTP &egrave; riuscita con successo.
+{% endblock %}
