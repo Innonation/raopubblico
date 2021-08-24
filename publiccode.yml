@@ -1,0 +1,88 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - identity-management
+description:
+  it:
+    apiDocumentation: 'https://app.swaggerhub.com/apis/Innonation6/RAO_API/1.0.0'
+    documentation: |-
+      https://github.com/Innonation/raopubblico/blob/master/Guida%20Utente%20Rao%20Pubblico%20v%201.0.pdf
+    features:
+      - Identificazione digitale
+      - Gestione nuovi operatori sportello pubblico
+      - Verifica conformità dati anagrafici del richiedente
+      - Dashboard statistiche
+      - Procedure per il recupero delle credenziali
+      - |-
+        Invio del token sigillato necessario al rilascio dell'identità digitale
+
+        SPID
+    genericName: Identity Management
+    localisedName: RAO
+    longDescription: |2
+       Il RAO (acronimo di Registration Authority Officer) è il soggetto incaricato alla verifica dell'identità personale dei cittadini che vogliono dotarsi dello SPID. 
+
+      Su richiesta di alcune pubbliche amministrazioni locali, l'AgID ha emanato
+
+      le [++Linee
+
+      Guida++](http://www.agid.gov.it/sites/default/files/repository_files/linee_guida_rao_pubblico_v.1.0_3_0.pdf)
+
+      per il modello di RAO pubblico consentendo alle pubbliche amministrazioni
+
+      interessate di svolgere questa importante attività sul territorio,
+
+      tipicamente presso gli sportelli pubblici. 
+
+       Il sistema prevede che i cittadini si rechino presso lo sportello pubblico delle pubbliche amministrazioni aderenti per farsi riconoscere, ricevano via e-mail un file (token) che possono usare da casa per richiedere e ottenere l'identità SPID presso uno dei gestori aderenti al sistema. 
+    screenshots:
+      - |-
+        https://raw.githubusercontent.com/Innonation/raopubblico/master/screen/Login.jpg
+      - |-
+        https://raw.githubusercontent.com/Innonation/raopubblico/master/screen/CreazioneOperatore.jpg
+      - |-
+        https://raw.githubusercontent.com/Innonation/raopubblico/master/screen/ListaIdentita.jpg
+      - |-
+        https://raw.githubusercontent.com/Innonation/raopubblico/master/screen/NuovaRichiesta.jpg
+      - |-
+        https://raw.githubusercontent.com/Innonation/raopubblico/master/screen/RiepilogoRichiesta.jpg
+    shortDescription: |-
+      La Pubblica Amministrazione può realizzare la verifica dell’identità dei
+
+      cittadini richiedenti SPID
+developmentStatus: stable
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: true
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+legal:
+  license: MIT
+  repoOwner: Innonation
+localisation:
+  availableLanguages:
+    - it
+  localisationReady: false
+maintenance:
+  contacts:
+    - email: jessicachiaracatania@gmail.com
+      name: Jessica Chiara Catania
+  type: community
+name: RAO Pubblico
+platforms:
+  - web
+releaseDate: '2021-08-24'
+roadmap: 'https://github.com/Innonation/raopubblico/issues'
+softwareType: standalone/web
+softwareVersion: 1.0.0
+url: 'https://github.com/Innonation/raopubblico'
