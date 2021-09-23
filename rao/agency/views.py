@@ -419,23 +419,23 @@ def add_identity(request, t):
                     request.session['identified'] = False
                     ud = create_identity(request, active_operator.id)
                     if ud:
-                        params = {
-                            'username': request.session['username'],
-                            'user_detail': ud,
-                            'is_admin': is_admin(request.session['username']),
-                        }
                         if 'identifica' not in request.POST:
                             verify_cf_dic = verify_cf(request)
+                            if verify_cf_dic['reversed_name_surname']:
 
-                            params['active_operator'] = active_operator
-
-                            params['verify_cf_dic'] = verify_cf_dic
+                                messages = display_alert(AlertType.DANGER, "Attenzione! Il nome e cognome sono stati invertiti.")
+                            else:
+                                params['verify_cf_dic'] = verify_cf_dic
+                                params['user_detail'] = ud
 
                             return render(request, settings.TEMPLATE_URL_AGENCY + 'add_identity.html',
-                                          {'params': params, 'token': t, 'form': form})
+                                          {'params': params, 'token': t, 'form': form,'messages': messages})
                         else:
-                            params['user_detail'] = json.dumps(ud.to_json())
-                            params['pin'] = request.POST.get('pinField')
+                            params = {
+                                'username': request.session['username'],
+                                'is_admin': is_admin(request.session['username']),
+                                'user_detail': json.dumps(ud.to_json()),
+                                'pin': request.POST.get('pinField')}
                             t = signing.dumps(params)
                             request.session['last_cf'] = ud.fiscalNumber
                             LOG.info("operator: {}, {} - Step1 identificazione OK - Form compilato".format(

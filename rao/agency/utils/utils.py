@@ -118,15 +118,15 @@ def verify_cf(request):
                 request.POST.get('dateOfBirth'), '%d/%m/%Y'),
             'belfiore_code': codicefiscale.decode(fiscal_code)['raw']['birthplace'] == belfiore_code
         }
-
         if belfiore_code == 'Z998':
             verify_fiscal_code['status_code'] = StatusCode.BAD_REQUEST.value
-            return verify_fiscal_code
 
-        if all(value is True for value in verify_fiscal_code.values()):
+        elif all(value is True for value in verify_fiscal_code.values()):
             verify_fiscal_code['status_code'] = StatusCode.OK.value
         else:
             verify_fiscal_code['status_code'] = StatusCode.ERROR.value
+        verify_fiscal_code['reversed_name_surname'] = fiscal_code[0:3] != fiscal_code[3:6] and fiscal_code[0:6] == (
+                codicefiscale.encode_surname(request.POST.get('name')) + codicefiscale.encode_name(request.POST.get('familyName')))
 
     except Exception as e:
         LOG.error("Exception: {}".format(str(e)), extra=set_client_ip())
